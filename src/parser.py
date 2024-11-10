@@ -1,9 +1,20 @@
-def sort_vacancy(salary_range: list[str], filter_words: str | None, vacancy_list: list):
-    # Функция для получения вакансий по критериям пользователя
-    # сортировка по зарплате
-    sort_vacancies = sorted(vacancy_list, key=lambda x: x['salary_from'], reverse=True)
+from typing import List, Dict, Any, Optional
 
-    # Фильтрация по критериям пользователя
+def sort_vacancy(salary_range: List[str], filter_words: Optional[str], vacancy_list: List[Dict[str, Any]])\
+        -> List[Dict[str, Any]]:
+    """Функция для получения вакансий по критериям пользователя с сортировкой по зарплате.
+
+    Args:
+        salary_range (List[str]): Диапазон зарплат, заданный пользователем.
+        filter_words (Optional[str]): Слова для фильтрации вакансий по названию. Если None, то фильтрация не
+         применяется.
+        vacancy_list (List[Dict[str, Any]]): Список вакансий для сортировки и фильтрации.
+
+    Returns:
+        List[Dict[str, Any]]: Отфильтрованный и отсортированный список вакансий.
+    """
+    sort_vacancies = sorted(vacancy_list, key=lambda x: x['salary_from'], reverse=True)
+    """ Фильтрация по критериям пользователя"""
     top_vacancies = []
     for vacancy in sort_vacancies:
 
@@ -19,8 +30,8 @@ def sort_vacancy(salary_range: list[str], filter_words: str | None, vacancy_list
     return top_vacancies
 
 
-# Функция для получения вакансий по ключам
-def get_vacancy(sort_vacancy: list, element: int):
+def get_vacancy(sort_vacancy: List[Dict[str, Any]], element: int) -> str:
+    """ Функция для получения вакансий по ключам"""
     name = sort_vacancy[element]['name']
     url = sort_vacancy[element]['url']
     salary_from = sort_vacancy[element]['salary_from']
