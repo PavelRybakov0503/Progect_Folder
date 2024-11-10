@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "progect-folder"
+version = "0.1.0"
+description = ""
+authors = ["pavel rybakov <pavel.r.2015@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+pytest = "^8.3.3"
+
+
+[tool.poetry.group.lint.dependencies]
+black = "^24.10.0"
+flake8 = "^7.1.1"
+mypy = "^1.13.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
