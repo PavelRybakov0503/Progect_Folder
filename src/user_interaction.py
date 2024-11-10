@@ -1,10 +1,11 @@
 from src.hh_api import HeadHunterAPI
 from src.parser import sort_vacancy, get_vacancy
 from src.json_worker import JSONSaver
+from typing import Optional, Union
 
 
-# Функция для взаимодействия с пользователем
-def user_interaction():
+def user_interaction() -> Optional[Union[ValueError, None]]:
+    """ Функция для взаимодействия с пользователем"""
     search_query = input("Введите поисковый запрос: ")
     try:
         page = int(input("Введите количество страниц, не больше 20: "))
@@ -45,7 +46,7 @@ def user_interaction():
         for element in range(len(top_vacancy)):
             print()
             print(get_vacancy(top_vacancy, element))
-        print(f'по донному запросу найдено: {len(top_vacancy)} вакансий')
+        print(f'по данному запросу найдено: {len(top_vacancy)} вакансий')
     else:
         for element in range(top_n):
             print()
